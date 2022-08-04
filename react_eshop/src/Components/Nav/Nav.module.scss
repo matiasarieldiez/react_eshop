@@ -1,0 +1,18 @@
+.Bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Link {
+  margin-left: 1em;
+  padding: 0.25em;
+}
+
+.Link_Active {
+  text-decoration: underline;
+  color: red;
+  &:visited {
+    color: red;
+  }
+}
