@@ -1,0 +1,29 @@
+.Bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: black;
+    height: 40px;
+    padding: 10px 0px;
+
+    & a {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.Link {
+    outline: 1px solid white;
+    padding: 5px 10px;
+    width: 50px;
+    align-items: center;
+    text-align: center;
+
+    &:hover {
+        font-weight: bold;
+    }
+}

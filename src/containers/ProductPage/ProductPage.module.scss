@@ -1,0 +1,35 @@
+.ProductPage {
+    text-align: center;
+    width: 90vw;
+    box-shadow: 0px 0px 5px 2px grey;
+    margin: auto;
+    margin-top: 100px;
+    padding: 30px;
+}
+
+.ProductContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Image {
+    width: 50%;
+    & img {
+        width: 400px;
+    }
+}
+
+.Details {
+    text-align: left;
+}
+
+.FormElement {
+    display: block;
+    margin-top: 20px;
+}
+
+.Input {
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+}
