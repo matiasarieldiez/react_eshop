@@ -1,9 +1,13 @@
 import Styles from "./ProductCard.module.scss";
 import { NavLink } from "react-router-dom";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, currentFeaturedProduct, index }) => {
     return (
-        <div className={Styles.Card}>
+        <div
+            className={
+                index === currentFeaturedProduct ? Styles.Card : Styles.Active
+            }
+        >
             <h3 className={Styles.Title}>
                 {product.title} ({product.model})
             </h3>
@@ -14,7 +18,7 @@ const ProductCard = ({ product }) => {
             ></img>
             <h4 className={Styles.Price}>AUD ${product.price}0</h4>
             <NavLink to={`/products/${product.id}`} className={Styles.Button}>
-                See More
+                <p>See More</p>
             </NavLink>
         </div>
     );

@@ -56,7 +56,11 @@ const ProductPage = () => {
                                 ></input>
                             </div>
                             <div>
-                                <input type="submit" value="Buy Now" />
+                                <input
+                                    type="submit"
+                                    value="Add to Cart"
+                                    className={Styles.FormElement}
+                                />
                             </div>
                         </form>
                     </div>
