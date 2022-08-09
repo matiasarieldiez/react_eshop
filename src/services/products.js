@@ -1,14 +1,14 @@
 import firestore from "../firebase";
 
 export const getProducts = async () => {
-    // Specify the collection we are working with
-    // CollectionReference
-    // https://firebase.google.com/docs/reference/js/v8/firebase.firestore.CollectionReference
+    //Get the Collection Ref
     const collectionRef = firestore.collection("products");
-    // get records from that collection
-    const data = await collectionRef.get(); // QuerySnapshot<T>
-    // clean up our records
-    const rawDocuments = data.docs; // Array<QueryDocumentSnapshot<T>>
+
+    //Get All Documents From Collection
+    const data = await collectionRef.get();
+
+    //Clean up our records
+    const rawDocuments = data.docs;
 
     const cleanedDocuments = rawDocuments.map((rawDoc) => ({
         ...rawDoc.data(),
@@ -16,7 +16,6 @@ export const getProducts = async () => {
     }));
 
     return cleanedDocuments;
-    // return our record
 };
 
 export const getProductById = async (id) => {
@@ -38,9 +37,9 @@ export const updateProductStockById = async (id, stock) => {
     //Get Document Reference
     const documentReference = collectionRef.doc(id);
 
-    // https://firebase.google.com/docs/reference/js/v8/firebase.firestore.DocumentReference
+    //Update Key Value Pair on Document
     await documentReference.update({ stock: stock - 1 });
 
-    // return true after document has updated
+    // Return true after document has been updated
     return true;
 };
