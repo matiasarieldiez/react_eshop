@@ -5,6 +5,8 @@ import { getProducts } from "../../services/products";
 
 const FeaturedProductList = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
+    const [loadingFeaturedProducts, setLoadingFeaturedProducts] =
+        useState(true);
 
     useEffect(() => {
         const wrapper = async () => {
@@ -12,6 +14,7 @@ const FeaturedProductList = () => {
             setFeaturedProducts(
                 featuredProducts.filter((product) => product.featured === true),
             );
+            setLoadingFeaturedProducts(false);
         };
 
         wrapper();
@@ -19,9 +22,13 @@ const FeaturedProductList = () => {
 
     return (
         <section className={Styles.Grid}>
-            {featuredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-            ))}
+            {loadingFeaturedProducts ? (
+                <h1>Loading...</h1>
+            ) : (
+                featuredProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                ))
+            )}
         </section>
     );
 };

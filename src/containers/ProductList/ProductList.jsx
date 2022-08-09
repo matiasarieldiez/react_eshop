@@ -5,11 +5,13 @@ import { getProducts } from "../../services/products";
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
+    const [loadingProducts, setLoadingProducts] = useState(true);
 
     useEffect(() => {
         const wrapper = async () => {
             const products = await getProducts();
             setProducts(products);
+            setLoadingProducts(false);
         };
 
         wrapper();
@@ -17,9 +19,13 @@ const ProductList = () => {
 
     return (
         <section className={Styles.Grid}>
-            {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-            ))}
+            {loadingProducts ? (
+                <h1>Loading...</h1>
+            ) : (
+                products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                ))
+            )}
         </section>
     );
 };
