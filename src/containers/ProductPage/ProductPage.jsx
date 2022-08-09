@@ -8,7 +8,6 @@ const ProductPage = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [quantity, setQuantity] = useState(0);
     const [addedToCartCount, setAddedToCartCount] = useState(0);
 
     useEffect(() => {
@@ -60,13 +59,6 @@ const ProductPage = () => {
                                 </select>
                             </div>
                             <div>
-                                <label className={Styles.FormElement}>
-                                    Quantity
-                                </label>
-                                <input
-                                    type="number"
-                                    className={Styles.Input}
-                                ></input>
                                 <h5>Current Stock: {product.stock}</h5>
                             </div>
                             <div>
