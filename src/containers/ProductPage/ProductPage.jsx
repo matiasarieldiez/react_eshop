@@ -58,6 +58,7 @@ const ProductPage = () => {
                                     type="number"
                                     className={Styles.Input}
                                 ></input>
+                                <h5>Current Stock: {product.stock}</h5>
                             </div>
                             <div>
                                 <input
