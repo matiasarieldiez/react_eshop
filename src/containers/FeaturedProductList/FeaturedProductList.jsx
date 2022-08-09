@@ -9,23 +9,6 @@ const FeaturedProductList = () => {
     const [loadingFeaturedProducts, setLoadingFeaturedProducts] =
         useState(true);
     const [currentFeaturedProduct, setCurrentFeaturedProduct] = useState(0);
-    const length = featuredProducts.length;
-
-    const nextFeaturedProduct = () => {
-        setCurrentFeaturedProduct(
-            currentFeaturedProduct === length - 1
-                ? 0
-                : currentFeaturedProduct + 1,
-        );
-    };
-
-    const previousFeaturedProduct = () => {
-        setCurrentFeaturedProduct(
-            currentFeaturedProduct === 0
-                ? length - 1
-                : currentFeaturedProduct - 1,
-        );
-    };
 
     useEffect(() => {
         const wrapper = async () => {
@@ -38,6 +21,23 @@ const FeaturedProductList = () => {
 
         wrapper();
     }, []);
+
+    //Logic for the Carousel
+    const nextFeaturedProduct = () => {
+        setCurrentFeaturedProduct(
+            currentFeaturedProduct === featuredProducts.length - 1
+                ? 0
+                : currentFeaturedProduct + 1,
+        );
+    };
+
+    const previousFeaturedProduct = () => {
+        setCurrentFeaturedProduct(
+            currentFeaturedProduct === 0
+                ? featuredProducts.length - 1
+                : currentFeaturedProduct - 1,
+        );
+    };
 
     return (
         <section className={Styles.Grid}>
