@@ -31,3 +31,16 @@ export const getProductById = async (id) => {
 
     return { id: rawData.id, ...rawData.data() };
 };
+
+export const updateProductStockById = async (id, stock) => {
+    //Get the Collection Ref
+    const collectionRef = firestore.collection("products");
+    //Get Document Reference
+    const documentReference = collectionRef.doc(id);
+
+    // https://firebase.google.com/docs/reference/js/v8/firebase.firestore.DocumentReference
+    await documentReference.update({ stock: stock - 1 });
+
+    // return true after document has updated
+    return true;
+};

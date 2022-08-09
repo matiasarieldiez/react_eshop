@@ -2,17 +2,25 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../../services/products";
 import Styles from "./ProductPage.module.scss";
+import { updateProductStockById } from "../../services/products";
 
 const ProductPage = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [quantity, setQuantity] = useState(0);
+    const [addedToCartCount, setAddedToCartCount] = useState(0);
 
     useEffect(() => {
         getProductById(id)
             .then((product) => setProduct(product))
             .finally(() => setLoading(false));
-    });
+    }, [id, addedToCartCount]);
+
+    const addToCart = async (id, stock) => {
+        await updateProductStockById(id, stock);
+        setAddedToCartCount(addedToCartCount + 1);
+    };
 
     return (
         <main className={Styles.ProductPage}>
@@ -30,8 +38,9 @@ const ProductPage = () => {
                         </h1>
                         <h2>AUD ${product.price}0</h2>
                         <form
-                            onSubmit={(e) => {
-                                e.preventDefault();
+                            onSubmit={(event) => {
+                                event.preventDefault();
+                                addToCart(product.id, product.stock);
                             }}
                         >
                             <div>
