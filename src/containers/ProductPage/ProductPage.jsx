@@ -29,7 +29,11 @@ const ProductPage = () => {
                             {product.colour}
                         </h1>
                         <h2>AUD ${product.price}0</h2>
-                        <form>
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                            }}
+                        >
                             <div>
                                 <label className={Styles.FormElement}>
                                     Size
